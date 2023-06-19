@@ -34,11 +34,11 @@ export default defineComponent({
     width: 100%;
 
     &__info {
-      width: 30%;
+      width: 20%;
     }
 
     &__items-board {
-      width: 70%;
+      width: 80%;
     }
   }
 }
