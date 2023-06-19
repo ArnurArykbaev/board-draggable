@@ -35,4 +35,13 @@ body {
     width: 840px;
   }
 }
+
+.card-component {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  background: #262626;
+  border: 1px solid #4d4d4d;
+  border-radius: 12px;
+}
 </style>
