@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from "vue";
-import boardComponent from "@/components/boardPage/boardComponent.vue";
+import boardComponent from "@/components/boardPage/board/boardComponent.vue";
 import infoComponent from "@/components/boardPage/infoComponent.vue";
 import boardFooter from "@/components/boardPage/boardFooter.vue";
 
