@@ -8,18 +8,38 @@
         <boardComponent />
       </div>
     </div>
-    <div class="board-footer"></div>
+
+    <boardFooter
+      v-if="state.footer"
+      @closeFooter="closeFooter"
+      class="board-footer-info"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import boardComponent from "@/components/boardPage/boardComponent.vue";
 import infoComponent from "@/components/boardPage/infoComponent.vue";
+import boardFooter from "@/components/boardPage/boardFooter.vue";
 
 export default defineComponent({
   name: "BoardPage",
-  components: { boardComponent, infoComponent },
+  components: { boardComponent, infoComponent, boardFooter },
+  setup() {
+    const state = reactive({
+      footer: true,
+    });
+
+    const closeFooter = (val: boolean) => {
+      state.footer = val;
+    };
+
+    return {
+      state,
+      closeFooter,
+    };
+  },
 });
 </script>
 
@@ -40,6 +60,10 @@ export default defineComponent({
     &__items-board {
       width: 80%;
     }
+  }
+
+  &-footer-info {
+    margin-top: 24px;
   }
 }
 </style>

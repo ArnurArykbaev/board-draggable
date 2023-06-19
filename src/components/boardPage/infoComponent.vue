@@ -1,7 +1,7 @@
 <template>
   <div class="info-component">
-    <div class="card-component">
-      <div class="card">
+    <div class="card">
+      <div class="card-inner">
         <img src="../../assets/cover.jpg" alt="" />
         <skeletonComponent class="info-component__header" :height="'40px'" />
         <skeletonComponent class="info-component__subinfo" :width="'75%'" />

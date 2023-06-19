@@ -31,12 +31,12 @@ body {
   max-width: 1280px;
   margin: 0 auto;
   width: 1280px;
-  @media (max-width: 1080px) {
-    width: 840px;
+  @media (max-width: 1340px) {
+    width: 940px;
   }
 }
 
-.card-component {
+.card {
   display: flex;
   flex-direction: column;
   padding: 20px 15px;
