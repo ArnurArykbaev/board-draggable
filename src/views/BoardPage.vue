@@ -4,9 +4,7 @@
       <div class="board-main__info">
         <infoComponent />
       </div>
-      <div class="board-main__items-board">
-        <boardComponent />
-      </div>
+      <boardComponent />
     </div>
 
     <boardFooter
@@ -51,14 +49,13 @@ export default defineComponent({
   &-main {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    column-gap: 24px;
     width: 100%;
 
     &__info {
-      width: 20%;
-    }
-
-    &__items-board {
-      width: 80%;
+      display: flex;
+      width: 50%;
     }
   }
 
