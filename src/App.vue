@@ -44,4 +44,52 @@ body {
   border: 1px solid #4d4d4d;
   border-radius: 12px;
 }
+
+.green {
+  background-color: #7faa65;
+}
+.green_blur {
+  background: rgba(184, 217, 152, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.blue {
+  background-color: #4e72d5;
+}
+.blue_blur {
+  background: rgba(59, 79, 181, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.red {
+  background-color: #d54f4f;
+}
+.red_blur {
+  background: rgba(239, 42, 42, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.yellow {
+  background-color: #d7d742;
+}
+.yellow_blur {
+  background: rgba(230, 241, 66, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.violet {
+  background-color: #656caa;
+}
+.violet_blur {
+  background: rgba(116, 129, 237, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.orange {
+  background-color: #eab35a;
+}
+.orange_blur {
+  background: rgba(237, 221, 116, 0.35);
+  backdrop-filter: blur(6px);
+}
 </style>

@@ -2,8 +2,8 @@
   <div>
     <button class="closeButtonComponent" :disabled="disabled">
       <svg
-        width="12"
-        height="12"
+        :width="width"
+        :height="width"
         viewBox="0 0 12 12"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -33,6 +33,10 @@ export default defineComponent({
     color: {
       type: String,
       default: "red",
+    },
+    width: {
+      type: String,
+      default: "12",
     },
   },
   methods: {},

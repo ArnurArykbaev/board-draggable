@@ -1,14 +1,11 @@
 <template>
-  <div v-if="showItem" class="item">
+  <div class="editor">
     <div @click="openModalEditor" class="square">
       <div
         :class="`${item.element.color}_blur`"
-        class="item__square__blur"
+        class="editor__square__blur"
       ></div>
-      <div :class="item.element.color" class="item__square"></div>
-    </div>
-    <div v-if="item.element.value > 0" class="quantity">
-      {{ item.element.value }}
+      <div :class="item.element.color" class="editor__square"></div>
     </div>
   </div>
 </template>
@@ -17,7 +14,7 @@
 import { computed, defineComponent } from "vue";
 
 export default defineComponent({
-  name: "itemComponent",
+  name: "itemEditor",
   components: {},
   props: {
     item: {
@@ -40,14 +37,11 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
-.item {
-  position: relative;
+<style lang="scss">
+.editor {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  justify-content: space-between;
   height: 100%;
 
   &__square {

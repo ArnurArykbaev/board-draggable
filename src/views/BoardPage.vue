@@ -23,7 +23,11 @@ import boardFooter from "@/components/boardPage/boardFooter.vue";
 
 export default defineComponent({
   name: "BoardPage",
-  components: { boardComponent, infoComponent, boardFooter },
+  components: {
+    boardComponent,
+    infoComponent,
+    boardFooter,
+  },
   setup() {
     const state = reactive({
       footer: true,
