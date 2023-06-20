@@ -12,8 +12,8 @@ const itemsStore = {
   state: {
     items: [
       { element: { color: "green", square: true, value: 8 }, id: 0 },
-      { element: { color: "blue", square: true, value: 2 }, id: 1 },
-      { element: { color: "yellow", square: true, value: 6 }, id: 2 },
+      { element: { color: "", square: true, value: 0 }, id: 1 },
+      { element: { color: "", square: true, value: 0 }, id: 2 },
       { element: { color: "", square: false, value: 0 }, id: 3 },
       { element: { color: "", square: false, value: 0 }, id: 4 },
       { element: { color: "", square: false, value: 0 }, id: 5 },
