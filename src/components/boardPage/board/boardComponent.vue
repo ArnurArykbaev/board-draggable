@@ -19,7 +19,7 @@
       @open="state.isOpen"
       @closeModal="closeModal"
     >
-      <itemEditor />
+      <itemEditor :item="state.editedItem" @closeModal="closeModal" />
     </modalComponent>
   </transition>
 </template>
@@ -53,10 +53,15 @@ export default defineComponent({
     const store = useStore();
     const state = reactive({
       isOpen: false,
+      editedItem: {
+        element: { color: "", square: false, value: 0 },
+        id: 0,
+      } as Item,
     });
 
     const openModalEditor = (item: Item) => {
       state.isOpen = true;
+      state.editedItem = item;
     };
     const closeModal = () => {
       state.isOpen = false;

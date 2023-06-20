@@ -93,7 +93,7 @@ export default defineComponent({
 .red {
   background-color: #fa7272;
   color: #fff;
-  box-shadow: 2px 2px 4px #ad5858, -2px -2px 7px #ad5858;
+  box-shadow: 1px 1px 4px #ad5858, -1px -1px 7px #ad5858;
 
   &:hover {
     box-shadow: 5px 5px 28px #f24c4c, -5px -5px 13px #f24c4c;

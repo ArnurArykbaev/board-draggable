@@ -16,9 +16,14 @@
     url(./fonts/SFProDisplay-Regular.ttf) format("truetype");
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: #ffffff;
   background-color: #1e1e1e;
+  box-sizing: border-box;
 }
 
 #app {
@@ -91,5 +96,11 @@ body {
 .orange_blur {
   background: rgba(237, 221, 116, 0.35);
   backdrop-filter: blur(6px);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #4d4d4d;
 }
 </style>

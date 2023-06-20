@@ -2,7 +2,7 @@ import { Item } from "@/models/itemModel";
 import mutations from "@/store/mutations";
 import { Commit } from "vuex";
 
-const { SET_ITEM, UPDATE_ITEMS } = mutations;
+const { SET_ITEM, UPDATE_ITEMS, DELETE_ITEM } = mutations;
 
 interface State {
   items: Item[];
@@ -14,9 +14,9 @@ const itemsStore = {
       { element: { color: "green", square: true, value: 8 }, id: 0 },
       { element: { color: "blue", square: true, value: 2 }, id: 1 },
       { element: { color: "yellow", square: true, value: 6 }, id: 2 },
-      { element: { color: "violet", square: true, value: 9 }, id: 3 },
-      { element: { color: "red", square: true, value: 5 }, id: 4 },
-      { element: { color: "orange", square: true, value: 1 }, id: 5 },
+      { element: { color: "", square: false, value: 0 }, id: 3 },
+      { element: { color: "", square: false, value: 0 }, id: 4 },
+      { element: { color: "", square: false, value: 0 }, id: 5 },
       { element: { color: "", square: false, value: 0 }, id: 6 },
       { element: { color: "", square: false, value: 0 }, id: 7 },
       { element: { color: "", square: false, value: 0 }, id: 8 },
@@ -55,6 +55,19 @@ const itemsStore = {
     [UPDATE_ITEMS](state: State, items: Item[]) {
       state.items = items;
     },
+    [DELETE_ITEM](state: State, item: Item) {
+      const currentItem = state.items.findIndex(
+        (itemStore) => itemStore.id === item.id
+      );
+      state.items[currentItem] = {
+        element: {
+          color: "",
+          square: false,
+          value: 0,
+        },
+        id: item.id,
+      };
+    },
   },
   actions: {
     setitem({ commit }: { commit: Commit }, item: Item) {
@@ -62,6 +75,9 @@ const itemsStore = {
     },
     updateItems({ commit }: { commit: Commit }, items: Item[]) {
       commit(UPDATE_ITEMS, items);
+    },
+    deleteItem({ commit }: { commit: Commit }, item: Item) {
+      commit(DELETE_ITEM, item);
     },
   },
 };

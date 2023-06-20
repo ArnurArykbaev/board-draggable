@@ -54,17 +54,16 @@ export default {
     justify-content: flex-end;
     align-items: center;
     z-index: 999;
-    padding-top: 20px;
 
     .modal-content {
       position: relative;
       height: 100%;
       width: 35%;
       min-width: 250px;
-      background-color: #212121;
-      opacity: 0.8;
+      background-color: #212121b0;
       border: 1px solid #4d4d4d;
-      padding: 20px;
+      padding: 40px;
+      backdrop-filter: blur(6px);
 
       .modal-close {
         position: absolute;
