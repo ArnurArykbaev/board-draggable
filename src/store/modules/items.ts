@@ -2,7 +2,7 @@ import { Item } from "@/models/itemModel";
 import mutations from "@/store/mutations";
 import { Commit } from "vuex";
 
-const { SET_ITEM, UPDATE_ITEMS, DELETE_ITEM } = mutations;
+const { SET_ITEM, UPDATE_ITEMS, DELETE_ITEM, CREATE_ITEM } = mutations;
 
 interface State {
   items: Item[];
@@ -68,6 +68,12 @@ const itemsStore = {
         id: item.id,
       };
     },
+    [CREATE_ITEM](state: State, item: Item) {
+      const currentItem = state.items.findIndex(
+        (itemStore) => itemStore.element.square === false
+      );
+      state.items[currentItem] = item;
+    },
   },
   actions: {
     setitem({ commit }: { commit: Commit }, item: Item) {
@@ -78,6 +84,9 @@ const itemsStore = {
     },
     deleteItem({ commit }: { commit: Commit }, item: Item) {
       commit(DELETE_ITEM, item);
+    },
+    createNewItem({ commit }: { commit: Commit }, item: Item) {
+      commit(CREATE_ITEM, item);
     },
   },
 };

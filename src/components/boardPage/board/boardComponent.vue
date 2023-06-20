@@ -5,7 +5,11 @@
         <template #item="{ element: item }">
           <div class="cell">
             <div class="cell-inner">
-              <itemComponent :item="item" @openModalEditor="openModalEditor" />
+              <itemComponent
+                :item="item"
+                @editItem="editItem"
+                @createNewItem="createNewItem"
+              />
             </div>
           </div>
         </template>
@@ -19,7 +23,11 @@
       @open="state.isOpen"
       @closeModal="closeModal"
     >
-      <itemEditor :item="state.editedItem" @closeModal="closeModal" />
+      <itemEditor
+        :item="state.editedItem"
+        @closeModal="closeModal"
+        :controls="state.controls"
+      />
     </modalComponent>
   </transition>
 </template>
@@ -57,6 +65,11 @@ export default defineComponent({
         element: { color: "", square: false, value: 0 },
         id: 0,
       } as Item,
+      emptyItem: {
+        element: { color: "", square: false, value: 0 },
+        id: 0,
+      } as Item,
+      controls: "new",
     });
 
     const openModalEditor = (item: Item) => {
@@ -75,10 +88,22 @@ export default defineComponent({
       },
     });
 
+    const editItem = (item: Item) => {
+      state.controls = "edit";
+      openModalEditor(item);
+    };
+
+    const createNewItem = () => {
+      state.controls = "new";
+      openModalEditor(state.emptyItem);
+    };
+
     return {
       state,
       openModalEditor,
       closeModal,
+      editItem,
+      createNewItem,
       items,
     };
   },

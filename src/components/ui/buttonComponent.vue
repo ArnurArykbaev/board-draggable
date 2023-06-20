@@ -25,6 +25,7 @@ export default defineComponent({
     return {
       buttonColors: {
         red: "red",
+        white: "white",
       } as buttonColors,
     };
   },
@@ -97,6 +98,15 @@ export default defineComponent({
 
   &:hover {
     box-shadow: 5px 5px 28px #f24c4c, -5px -5px 13px #f24c4c;
+  }
+}
+.white {
+  background-color: #ffffff;
+  color: #383838;
+  box-shadow: 1px 1px 2px #b4a6a6, -1px -1px 10px #a98989;
+
+  &:hover {
+    box-shadow: 5px 5px 28px #cdcccc, -5px -5px 13px #c3c0c0;
   }
 }
 </style>

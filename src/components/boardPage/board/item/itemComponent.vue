@@ -11,6 +11,7 @@
       {{ item.element.value }}
     </div>
   </div>
+  <div v-else @click="createNewItem" class="empty-item"></div>
 </template>
 
 <script lang="ts">
@@ -30,11 +31,17 @@ export default defineComponent({
       () => props.item.element.square && props.item.element.value
     );
     const openModalEditor = () => {
-      emit("openModalEditor", props.item);
+      emit("editItem", props.item);
+    };
+
+    const createNewItem = () => {
+      console.log("CKE");
+      emit("createNewItem");
     };
     return {
       showItem,
       openModalEditor,
+      createNewItem,
     };
   },
 });
@@ -73,5 +80,11 @@ export default defineComponent({
     border-bottom: none;
     border-right: none;
   }
+}
+
+.empty-item {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 </style>

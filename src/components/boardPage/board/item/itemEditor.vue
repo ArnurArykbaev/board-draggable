@@ -1,12 +1,18 @@
 <template>
   <div class="editor">
-    <div class="editor__subject">
+    <div v-if="controls === 'edit'" class="editor__subject">
       <div @click="openModalEditor" class="square">
         <div
           :class="`${item.element.color}_blur`"
           class="editor__square__blur"
         ></div>
         <div :class="item.element.color" class="editor__square"></div>
+      </div>
+    </div>
+    <div v-else class="editor__subject">
+      <div @click="openModalEditor" class="square">
+        <div :class="`${state.color}_blur`" class="editor__square__blur"></div>
+        <div :class="state.color" class="editor__square"></div>
       </div>
     </div>
 
@@ -45,31 +51,46 @@
 
     <div class="editor__footer">
       <buttonComponent
+        v-if="controls === 'edit'"
         @click="deleteItem(item)"
         :buttonTitle="'Удалить предмет'"
+      />
+      <itemCreatorControls
+        v-else
+        @closeModal="closeModal"
+        @pickColor="pickColor"
+        @createNew="createNew"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, reactive } from "vue";
 import skeletonComponent from "@/components/ui/skeletonComponent.vue";
 import buttonComponent from "@/components/ui/buttonComponent.vue";
+import itemCreatorControls from "@/components/boardPage/board/item/itemCreatorControls.vue";
 import { useStore } from "vuex";
 import { Item } from "@/models/itemModel";
 
 export default defineComponent({
   name: "itemEditor",
-  components: { skeletonComponent, buttonComponent },
+  components: { skeletonComponent, buttonComponent, itemCreatorControls },
   props: {
     item: {
       type: Object,
       default: () => ({}),
     },
+    controls: {
+      type: String,
+      default: "new",
+    },
   },
   setup(props, { emit }) {
     const store = useStore();
+    const state = reactive({
+      color: "",
+    });
 
     const showItem = computed(
       () => props.item.element.square && props.item.element.value
@@ -82,10 +103,27 @@ export default defineComponent({
       emit("closeModal");
     };
 
+    const closeModal = () => {
+      emit("closeModal");
+    };
+
+    const pickColor = (color: string) => {
+      state.color = color;
+    };
+
+    const createNew = (item: Item) => {
+      store.dispatch("createNewItem", item);
+      closeModal();
+    };
+
     return {
+      state,
       showItem,
       openModalEditor,
       deleteItem,
+      closeModal,
+      pickColor,
+      createNew,
     };
   },
 });
@@ -144,6 +182,10 @@ export default defineComponent({
     &__header {
       margin-bottom: 24px;
     }
+  }
+
+  &__footer {
+    width: 100%;
   }
 }
 </style>
